@@ -16,10 +16,13 @@ Add as much or as little as you want, the point is you start without the kitchen
 ## The Goal
 
 The goal of Panini PHP is to provide a slim equivalent of modern frameworks like
-CakePHP and Laravel. It covers the essential features you need such as database
-management, user management/permissions, ajax calls, caching, etc... But removes
-features
+CakePHP and Laravel. It handles the essential features you need such as database
+management, user management/permissions, ajax calls, caching, etc... and leaves
+the rest to you.
 
+The entire engine can be found under the system sub-directory. It's made of a
+handful of carefully thought out PHP files, and I encourage you to have a look
+through them to see how it works.
 
 ## Requirements
 
