@@ -9,28 +9,16 @@ Add as much or as little as you want, the point is you start without the kitchen
 * Stupidly fast, loading only what's needed to get your views rendered.
 * Initial package including vendor files is less than 1mb, less than 400 files.
 * Has an easy to use routing system, with automatic controller and view discovery.
-* Avoids use of super-global's by using singleton pattern for the App.
-* Output in Twig, Xml, Soap/JSON.
+* Output to Twig, XML, Soap/JSON.
+* Works great alongside popular projects such as React, AngularJS and VueJS.
 
 
 ## The Goal
 
-I like projects like Laravel and CakePHP, they do exactly what you expect of
-them, and can be relied upon at scale. But over time experience has taught me
-that many of these more popular frameworks have turned into sprawling monsters.
-
-Dev's have argued that the size is a trade off for ability. But to me forcing a
-developer to start with crazy numbers of source files is verging on criminal.
-Laravel for one dumps near 8000 files into a folder before you even begin a
-project! Yes extracting onto a local drive is faster now days, but you will 
-still have to deploy the project eventually, which for many is slow.
-
-The aim of Panini PHP is to cut out the bull, and just provide a modern smart
-and fast framework designed to facilitate RAD (rapid application development).
-
-It covers the essential features you need such as database management, user
-management/permissions, caching, etc... But crucially keeps compact, allowing
-you accomplish what you need, with deployment that can take only seconds.
+The goal of Panini PHP is to provide a slim equivalent of modern frameworks like
+CakePHP and Laravel. It covers the essential features you need such as database
+management, user management/permissions, ajax calls, caching, etc... But removes
+features
 
 
 ## Requirements
@@ -66,7 +54,7 @@ looks like this:
    ```
 
 Although Panini is not an MVC framework, it does attempt to adhere to that
-methodology where beneficial. So the `controllers` folder hosts PHP files for
+methodology where possible. So the `controllers` folder hosts PHP files for
 handling page requests. The `models` folder can be used (but not required) when
 using ORM technologies like Eloquent. The `views` folder usually mirrors 
 controllers but with the .twig extension. And `app.php` is a PHP script that
@@ -93,6 +81,7 @@ Panini would search for a controller like this:
 Please note that a valid working controller is required for output when error
 logs are disabled.
 
+
 ## Controllers
 
 A controller file is a PHP script that tells Panini what to do when a URL is
@@ -109,6 +98,7 @@ function `present_view` asks for a view path & arguments. Here I've told Panini
 to load a .twig file template with the same name from the `app/views` folder by
 just passing a null, however you can indicate a different one by replacing null
 with the relative path to another .twig file template.
+
 
 ## Modules
 
@@ -152,14 +142,9 @@ Then iterate through them using twig in your `users.twig` view like this:
    </ul>
    ```
 
-## Tutorials
+## License
 
-The project beta stage is just around the corner. Once reached I'll commit a
-release tag, and will then start uploading tutorials on the (https://kodaloid.com) 
-website, with video tutorials on how to build a few basic projects consisting 
-partly of videos and source examples to get people quickly set-up.
-
-Watch this space!
+The project will always be free to use and modify under the MIT license [here](/LICENSE).
 
 ## Contributing &amp; Support
 

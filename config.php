@@ -30,5 +30,5 @@ define('DB_DATE_FORMAT', 'Y-m-d H:i:s');
 
 
 
-// Constants.
+// Max search depth for controllers / veiws.
 define('MAX_ROOT_DEPTH', 5);

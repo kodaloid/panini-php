@@ -15,6 +15,6 @@ namespace App\Modules;
  */
 class User_Manager_Basic {
 
-    
+	
 
 }

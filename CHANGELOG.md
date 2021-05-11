@@ -1,3 +1,11 @@
+## Version: 0.1 (Build 0005) [alpha] - 11/05/2021
+
+I accidentally removed the Git repository thinking that I had it hosted elsewhere,
+anyway the repo is back (annoyingly without the previous commits). This build
+mostly includes some typo fixes and I renamed the default controller and view from
+"root" to "index" as it makes more sense. Also I fixed the indentation on source
+files that previously used space characters, they now use tabs.
+
 ## Version: 0.1 (Build 0004) [alpha]
 
 After a lot of thought, I have realised a module system simplifies providing
