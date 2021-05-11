@@ -20,7 +20,7 @@ CakePHP and Laravel. It handles the essential features you need such as database
 management, user management/permissions, ajax calls, caching, etc... and leaves
 the rest to you.
 
-The entire engine can be found under the system sub-directory. It's made of a
+The entire engine can be found under the [system](/system) sub-directory. It's made of a
 handful of carefully thought out PHP files, and I encourage you to have a look
 through them to see how it works.
 
