@@ -1,0 +1,14 @@
+{
+    "name": "kodaloid/panini-php",
+    "description": "A compact, Composer friendly PHP framework for building web apps.",
+    "keywords": [
+        "framework",
+        "panini"
+    ],
+    "license": "MIT",
+    "require": {
+        "twig/twig": "^3.0",
+        "symfony/polyfill-ctype": "^1.18",
+        "symfony/polyfill-mbstring": "^1.18"
+    }
+}
