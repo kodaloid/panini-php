@@ -189,11 +189,11 @@ final class App {
 	 */
 	public function present_view($view = null, $data = []) {
 		if (is_null($view)) {
-			$views = $this->predict_path('', '.twig');
+			$views = $this->predict_path(__APP__ . '\views', '.twig');
 			$view = reset($views);
 		}
 		$this->_data['view'] = $view;
-		echo $this->_twig->render($view, $data);
+		echo $this->_twig->render(basename($view), $data);
 		exit;
 	}
 
