@@ -112,7 +112,8 @@ that you will want to use Composer to add packages to enhance things.
 However sometimes you just want things to work. So Panini comes with several
 installable *modules* to cover the basics.
 
-Here's an example of how easy it is to set-up and use MySQL using modules:
+Here's an example of how easy it is to set-up and use MySQL using modules (do
+this in `app.php`):
 
    ```
    $db = $this->load_module(
