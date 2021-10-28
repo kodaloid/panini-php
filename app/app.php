@@ -14,8 +14,8 @@ if (!defined('__ROOT__')) die('Access denied');
 
 
 
-$db = $this->load_module(
+/*$db = $this->load_module(
     'database',
     'MySQL_Database',
     [ DB_HOST, DB_NAME, DB_USER, DB_PASS ]
-);
+); */

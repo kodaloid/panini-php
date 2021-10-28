@@ -21,7 +21,7 @@ final class Helper {
 	/**
 	 * Alternative to the implode method that adds a max limiter.
 	 */
-	static function implode_path($glue = '/', $pieces, $max_count = 10) {
+	static function implode_path($glue = '/', $pieces = [], $max_count = 10) {
 		// make sure we always have an array.
 		$pieces = is_array($pieces) ? $pieces : [];
 		// trim the array if it exceeds our limits.

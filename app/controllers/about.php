@@ -1,8 +1,7 @@
 <?php
-
-
-
-// An example of a secondary controller aside from root.php
+/**
+ * An example of a secondary controller aside from root.php
+ */
 
 
 

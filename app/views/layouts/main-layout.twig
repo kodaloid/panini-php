@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="Somebody">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+        <link rel="stylesheet" href="{{ 'app/assets/main.css' | url }}" />
+		<title>{% block title %}{% endblock %} - My Website</title>
+    {% endblock %}
+</head>
+<body>
+
+	{% block content %}{% endblock %}
+
+	{% block footer %}
+	<div id="footer" class="has-text-centered">
+		&copy; Copyright 20xx by Some Owner.
+   </div>
+	{% endblock %}
+
+</body>
+</html>

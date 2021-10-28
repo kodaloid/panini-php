@@ -110,14 +110,29 @@ final class App {
 	 */
 	public function run() {
 		// allow the web folder to exec code before controller is discovered.
-		require_once __APP__ . '\app.php';
+		require_once __APP__ . '/app.php';
 
 		// find the route.
-		$routes = $this->predict_path(__APP__ . '\controllers', '.php');
+		$routes = $this->predict_path(__APP__ . '/controllers', '.php');
 		$this->_data['controller_routes'] = $routes;
 
 		// require the last route we added, which is now at index 0.
 		require_once reset($routes);
+	}
+
+
+	
+	/**
+	 * Redirect to another URL.
+	 */
+	public function redirect($url) {
+		if (!headers_sent()) {
+			header("Location: $url");
+			exit;
+	  	}
+		
+		echo "Cannot redirect, for now please click this <a href=\"{$url}\">link</a> instead\n";
+    	exit;
 	}
 
 
@@ -126,21 +141,27 @@ final class App {
 	 * Locate and execute a controller bsed on the request uri.
 	 * @param string $prefix The path prefix.
 	 * @param string $default_key The default name/key for a file to locate.
+	 * @param bool $force_index When true returns index if no results are found.
 	 */
 	public function predict_path($prefix, $extension) {
-		$routes = [ "{$prefix}\\index{$extension}" ];
+		$routes = [ ];
 		$pcount = $this->request->uri_parts_count;
 		$max    = $pcount < MAX_ROOT_DEPTH ? $pcount : MAX_ROOT_DEPTH;
 
 		// check for controller matches upto a depth of MAX_ROOT_DEPTH
 		for ($i=$max; $i>=1; $i--) {
 			// Concatenate a number of pieces from the uri into a path string.
-			$bits = Helper::implode_path('\\', $this->request->uri_parts, $i);
-			$path = "{$prefix}\\{$bits}{$extension}";
+			$bits = Helper::implode_path('/', $this->request->uri_parts, $i);
+			$path = "{$prefix}/{$bits}{$extension}";
 			// If it exists, add it to the route queue.
-			if (!in_array($path, $routes) && file_exists($path)) {
+			if (!in_array($path, $routes) && file_exists($path)  && !empty($path)) {
 				$routes[] = $path;
 			}
+		}
+
+		// handle missing route arguments.
+		if (empty($routes)) {
+			array_unshift($routes, "{$prefix}/index{$extension}");
 		}
 
 		// require the last route we added, which is now at index 0.
@@ -181,6 +202,27 @@ final class App {
 	}
 
 
+	/**
+	 * Check to see if a module has been loaded.
+	 */
+	public function has_module($alias) {
+		return isset($this->_modules->$alias);
+	}
+
+
+	/**
+	 * Finds the location of a view file, passing null attempts to predict the path.
+	 */
+	public function locate_view($view = null) {
+		if (is_null($view)) {
+			$views = $this->predict_path(__APP__ . '/views', '.twig');
+			if (!empty($views)) {
+				return reset($views);
+			}
+		}
+		return $view;
+	}
+
 
 	/**
 	 * Called by a controller to render a twig template as output.
@@ -188,12 +230,9 @@ final class App {
 	 * @param array $data The data variables to pass to the twig view.
 	 */
 	public function present_view($view = null, $data = []) {
-		if (is_null($view)) {
-			$views = $this->predict_path('', '.twig');
-			$view = reset($views);
-		}
+		$view = $this->locate_view($view);
 		$this->_data['view'] = $view;
-		echo $this->_twig->render($view, $data);
+		echo $this->_twig->render(basename($view), $data);
 		exit;
 	}
 

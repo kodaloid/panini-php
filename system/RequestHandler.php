@@ -28,9 +28,12 @@ final class RequestHandler {
 		// setup variables. 
 		$this->_uri = $this->serverVar('REQUEST_URI');
 
-		$url_parts = explode('/', $this->uri);
+        $uri = $this->uri;
+        $uri = stripos($uri, '?') > 0 ? strtok($uri, '?') : $uri;
+		$url_parts = explode('/', $uri);
         
 		$site_rel_url = parse_url(SITE_URL, PHP_URL_PATH);
+		
 		$site_subs = substr_count($site_rel_url, '/');
 		if ($site_subs > 0) {
 			// basically if site url implies subdirectories, slice off those
@@ -40,6 +43,7 @@ final class RequestHandler {
 		}
 
 		$this->_uri_parts = array_merge($url_parts, ['']); // ensure we always have one part.
+		$this->_uri_parts = array_filter($this->_uri_parts);
 		$this->_user_agent = $this->serverVar('HTTP_USER_AGENT');
 		$this->_referer_uri = $this->serverVar('HTTP_REFERER');
 	}
@@ -79,6 +83,14 @@ final class RequestHandler {
 	}
 
 
+	/**
+	 * See if  a $_POST var is set. 
+	 */
+	public function requestVarExists($name) {
+		return isset($_REQUEST[$name]);
+	}
+
+
 
 	/**
 	 * Read a $_POST var, specifying default when not available. 
@@ -88,11 +100,24 @@ final class RequestHandler {
 	}
 
 
+	/**
+	 * See if  a $_POST var is set. 
+	 */
+	public function postVarExists($name) {
+		return isset($_POST[$name]);
+	}
+
+
 
 	/**
 	 * Read a $_SERVER var, specifying default when not available. 
 	 */
 	public function serverVar($name, $default_value = '') {
 		return isset($_SERVER[$name]) ? $_SERVER[$name] : $default_value;
+	}
+
+
+	public function isPosting() {
+		return count($_POST) > 0;
 	}
 }

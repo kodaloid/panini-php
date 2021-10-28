@@ -1,3 +1,14 @@
+## Version: 0.1 (Build 0006) [alpha] - 28/10/2021
+
+Whilst working with Panini on another project, I realised there were a few fixes
+I could make. These have now made it to the current build:
+
+- App::present_json() upgraded to provide http status codes.
+- Now correctly handles 401 errors, see index.php for how this is accomplished.
+- You can now instantiate modules that have empty constructors.
+- Updated readme to explain how to do things like fragments.
+- Updated the starter template to demonstrate assets, layouts and fragments.
+
 ## Version: 0.1 (Build 0005) [alpha] - 11/05/2021
 
 I accidentally removed the Git repository thinking that I had it hosted elsewhere,

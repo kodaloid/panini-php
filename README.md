@@ -145,6 +145,15 @@ Then iterate through them using twig in your `users.twig` view like this:
    </ul>
    ```
 
+## Views
+
+Views are the front facing code that presents HTML to the user. In general you
+should have one view per controller, however there are some exceptions to this,
+for example when you want to include a fragment.
+
+PaniniPHP has full support for the symphony/twig system, including extends as
+demonstrated in the views folder.
+
 ## License
 
 The project will always be free to use and modify under the MIT license [here](/LICENSE).
