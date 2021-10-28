@@ -230,14 +230,7 @@ final class App {
 	 * @param array $data The data variables to pass to the twig view.
 	 */
 	public function present_view($view = null, $data = []) {
-<<<<<<< HEAD
 		$view = $this->locate_view($view);
-=======
-		if (is_null($view)) {
-			$views = $this->predict_path(__APP__ . '\views', '.twig');
-			$view = reset($views);
-		}
->>>>>>> dc07f5077d3d71690bc12d2e898bd55af4db4d7d
 		$this->_data['view'] = $view;
 		echo $this->_twig->render(basename($view), $data);
 		exit;
